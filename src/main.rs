@@ -1,8 +1,7 @@
-use serialport::{SerialPort, SerialPortSettings};
+use std::sync::mpsc::{self, Receiver, Sender};
 use std::sync::{Arc, Mutex};
-use std::sync::mpsc::{self, Sender, Receiver};
-use std::time::Duration;
 use std::thread;
+use std::time::Duration;
 
 #[derive(Debug, Clone)]
 struct SharedData {
@@ -41,14 +40,10 @@ fn main() {
 
     // Serial port reading thread
     thread::spawn(move || {
-        let settings = SerialPortSettings {
-            baud_rate: baud_rate,
-            timeout: Duration::from_millis(10),
-            ..Default::default()
+        let mut port = match serialport::new(serial_port_name, baud_rate).open() {
+            Ok(port) => port,
+            Err(_) => return -1,
         };
-
-        let mut port = serialport::open_with_settings(&serial_port_name, &settings)
-            .expect("Failed to open serial port");
 
         let mut buffer: Vec<u8> = vec![0; 1024];
 
@@ -68,7 +63,7 @@ fn main() {
     });
 
     // Serial port writing thread
-    thread::spawn(move || {
+    /*thread::spawn(move || {
         let settings = SerialPortSettings {
             baud_rate: baud_rate,
             timeout: Duration::from_millis(10),
@@ -87,13 +82,16 @@ fn main() {
                 }
             }
         }
-    });
+    });*/
 
     // Simulate other threads accessing the shared data and sending data
     thread::sleep(Duration::from_secs(2));
     {
         let data = shared_data.lock().unwrap();
-        println!("Main Thread - Last Received Data: {:?}", data.get_last_received());
+        println!(
+            "Main Thread - Last Received Data: {:?}",
+            data.get_last_received()
+        );
     }
 
     tx.send(vec![0x41, 0x42, 0x43]).unwrap(); // Send 'ABC' via serial
