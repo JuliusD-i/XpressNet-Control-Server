@@ -1,30 +1,19 @@
-use std::sync::mpsc::{self, Receiver, Sender};
-use std::sync::{Arc, Mutex};
-use std::thread;
-use std::time::Duration;
+mod data_structures;
+mod message_parser;
+mod serial_communication;
 
-#[derive(Debug, Clone)]
-struct SharedData {
-    last_received: Vec<u8>,
-}
+use std::collections::VecDeque;
+use crate::serial_communication::XpressNetInterface;
 
-impl SharedData {
-    fn new() -> Self {
-        SharedData {
-            last_received: Vec::new(),
-        }
-    }
-
-    fn update(&mut self, data: Vec<u8>) {
-        self.last_received = data;
-    }
-
-    fn get_last_received(&self) -> Vec<u8> {
-        self.last_received.clone()
-    }
-}
+const MAXIMUM_BUFFER_SIZE: usize = 10000;
 
 fn main() {
+    let mut receive_queue: VecDeque<Vec<u8>> = VecDeque::with_capacity(MAXIMUM_BUFFER_SIZE);
+    let mut send_queue: VecDeque<Vec<u8>> = VecDeque::with_capacity(MAXIMUM_BUFFER_SIZE);
+    let serial_port = XpressNetInterface::new("/dev/ttyUSB0");
+
+
+    /*
     // Replace with your actual serial port and baud rate
     let serial_port_name = "/dev/ttyUSB0";
     let baud_rate = 9600;
@@ -100,4 +89,7 @@ fn main() {
     loop {
         thread::sleep(Duration::from_secs(10));
     }
+
+     */
+    println!("Hello World!")
 }

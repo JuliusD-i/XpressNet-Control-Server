@@ -1,4 +1,4 @@
-import serial
+    import serial
 
 def read_from_serial(port, baud_rate):
     try:
