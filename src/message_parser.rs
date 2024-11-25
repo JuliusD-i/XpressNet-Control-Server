@@ -23,6 +23,16 @@ pub struct HeaderType {
     name: String,
     raw_value: u8,
 }
+
+#[derive(Debug, Eq, PartialEq)]
+pub struct PossibleMessages {
+    header: String[],
+    raw_data: u8,
+}
+
+
+
+
 #[derive(Debug, Eq, PartialEq)]
 pub enum MessageFromMaster {
     SendRequest {
@@ -192,6 +202,11 @@ pub fn parse_call(data: u8, receive_time: u64) -> Result<MessageCallType, String
         Err("Unknown Error!".parse().unwrap())
     }
 }
+
+
+
+
+
 
 #[cfg(test)]
 mod tests {
