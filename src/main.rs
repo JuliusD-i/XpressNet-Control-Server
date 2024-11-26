@@ -1,8 +1,8 @@
-mod data_structures;
 mod message_parser;
 mod serial_communication;
 
 use std::collections::VecDeque;
+use crate::message_parser::MessageParser;
 use crate::serial_communication::XpressNetInterface;
 
 const MAXIMUM_BUFFER_SIZE: usize = 10000;
@@ -12,6 +12,7 @@ fn main() {
     let mut send_queue: VecDeque<Vec<u8>> = VecDeque::with_capacity(MAXIMUM_BUFFER_SIZE);
     let serial_port = XpressNetInterface::new("/dev/ttyUSB0");
 
+    let parser = MessageParser::new();
 
     /*
     // Replace with your actual serial port and baud rate
