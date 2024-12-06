@@ -1,8 +1,10 @@
-use crate::message_parser::data_structures::{get_definitions, LZMessageDefinition};
+use crate::message_parser::MessageParserState::WaitingForCall;
+use crate::message_parser::messages::{get_definitions, LZMessage, LZMessageDefinition, LZMessageDefinitionFilter};
 
-mod data_structures;
+mod messages;
 
-enum MessageParserState {
+#[derive(Debug, Eq, PartialEq)]
+pub enum MessageParserState {
     WaitingForCall,
     WaitingForHeader,
     WaitingForIdentifier,
@@ -12,30 +14,28 @@ enum MessageParserState {
 pub struct MessageParser {
     state: MessageParserState,
     collected_data: Vec<u8>,
-    message_definitions: Vec<LZMessageDefinition>,
+    message_filter: LZMessageDefinitionFilter
 }
 impl MessageParser {
     pub fn new() -> MessageParser {
         MessageParser {
             state:MessageParserState::WaitingForCall,
             collected_data: Vec::new(),
-            message_definitions: get_definitions(),
+            message_filter: LZMessageDefinitionFilter::new(),
         }
     }
 
-    pub fn parse_call(_data: u8, _receive_time: u64) -> LZMessageDefinition {
-        LZMessageDefinition {
-            name: data_structures::LZMessageName::NormalRequest,
-            call_byte_template: "P10AAAAA".to_string(),
-            has_header: false,
-            header_byte_template: "".to_string(),
-            data_byte_count: 0,
-            has_identifier: false,
-            identifier_template: "".to_string(),
-            min_version: 0.0,
-            max_version: 99.0,
-            has_xor: false,
+    pub fn parse_data(mut self, data: u8, _receive_time: u64) -> Result<LZMessage, MessageParserState> {
+        if self.state == WaitingForCall {
+            self.collected_data.clear();
+            self.collected_data.push(data);
+            self.message_filter.filter_call(data);
+            if self.message_filter.possible_definitions.len() == 1 {
+                
+            }
         }
+        
+        Result::Err(MessageParserState::WaitingForCall)
     }
 
 }

@@ -1,5 +1,6 @@
 mod message_parser;
 mod serial_communication;
+mod railway_state;
 
 use std::collections::VecDeque;
 use crate::message_parser::MessageParser;
