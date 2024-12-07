@@ -1,10 +1,13 @@
 mod message_parser;
-mod serial_communication;
 mod railway_state;
+mod serial_communication;
 
-use std::collections::VecDeque;
 use crate::message_parser::MessageParser;
+use crate::railway_state::RailwaySetupState;
 use crate::serial_communication::XpressNetInterface;
+use std::cell::RefCell;
+use std::collections::VecDeque;
+use std::rc::Rc;
 
 const MAXIMUM_BUFFER_SIZE: usize = 10000;
 
@@ -12,8 +15,8 @@ fn main() {
     let mut receive_queue: VecDeque<Vec<u8>> = VecDeque::with_capacity(MAXIMUM_BUFFER_SIZE);
     let mut send_queue: VecDeque<Vec<u8>> = VecDeque::with_capacity(MAXIMUM_BUFFER_SIZE);
     let serial_port = XpressNetInterface::new("/dev/ttyUSB0");
-
-    let parser = MessageParser::new();
+    let railway_state = Rc::new(RefCell::new(RailwaySetupState::new())); // TODO: Wrap this in something threadsafe
+    let parser = MessageParser::new(railway_state.clone());
 
     /*
     // Replace with your actual serial port and baud rate
