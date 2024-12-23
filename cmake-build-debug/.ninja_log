@@ -1,0 +1,8 @@
+# ninja log v6
+12	53	1734994504344069354	CMakeFiles/xpressnet_rewrite.dir/lib/xpressnet-lib/messages.cpp.o	245601e25256432c
+9	61	1734994504340070472	CMakeFiles/xpressnet_rewrite.dir/lib/xpressnet-lib/xpressnet.cpp.o	5085ec2fce076ac5
+7	65	1734994504336071589	CMakeFiles/xpressnet_rewrite.dir/main.cpp.o	ee37f1d81d4b0da3
+61	119	1734994504392055936	CMakeFiles/lz_message_definition_filter_test.dir/lib/xpressnet-lib/messages.cpp.o	6bf7c76211856cc7
+55	253	1734994504384058172	CMakeFiles/lz_message_definition_filter_test.dir/tests/lz_message_definition_filter_test.cpp.o	404fb8e38ff71450
+66	830	1734994504396054818	xpressnet_rewrite	b068bec1746ceab7
+260	883	1734994504592000030	lz_message_definition_filter_test	d5be1ecea8ca1c01
