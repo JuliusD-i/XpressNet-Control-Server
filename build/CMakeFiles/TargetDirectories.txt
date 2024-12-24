@@ -1,4 +1,0 @@
-/home/julius/CLionProjects/xpressnet_rewrite/build/CMakeFiles/xpressnet_rewrite.dir
-/home/julius/CLionProjects/xpressnet_rewrite/build/CMakeFiles/test.dir
-/home/julius/CLionProjects/xpressnet_rewrite/build/CMakeFiles/edit_cache.dir
-/home/julius/CLionProjects/xpressnet_rewrite/build/CMakeFiles/rebuild_cache.dir

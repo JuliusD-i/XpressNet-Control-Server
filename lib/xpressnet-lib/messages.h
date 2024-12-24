@@ -433,10 +433,13 @@ public:
     LZMessageDefinitionFilter() : possible_definitions(get_definitions()) {}
 
     std::vector<LZMessageDefinition> remaining_message_definitions();
-    uint8_t get_call_address() const;
+
+    [[nodiscard]] uint8_t get_call_address() const;
     static bool check_parity(uint8_t data);
     void reset();
     void filter_call(uint8_t call_byte);
+    void filter_header(uint8_t header_byte, uint8_t call_byte);
+
 
 
 private:

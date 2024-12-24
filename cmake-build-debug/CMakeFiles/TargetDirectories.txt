@@ -1,5 +1,5 @@
-/home/julius/CLionProjects/xpressnet_rewrite/cmake-build-debug/CMakeFiles/xpressnet_rewrite.dir
-/home/julius/CLionProjects/xpressnet_rewrite/cmake-build-debug/CMakeFiles/lz_message_definition_filter_test.dir
-/home/julius/CLionProjects/xpressnet_rewrite/cmake-build-debug/CMakeFiles/test.dir
-/home/julius/CLionProjects/xpressnet_rewrite/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/julius/CLionProjects/xpressnet_rewrite/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/julius/Dokumente/XpressNet-Control-Server/cmake-build-debug/CMakeFiles/XpressNet-Control-Server.dir
+/home/julius/Dokumente/XpressNet-Control-Server/cmake-build-debug/CMakeFiles/XpressNet-Control-Server-test.dir
+/home/julius/Dokumente/XpressNet-Control-Server/cmake-build-debug/CMakeFiles/test.dir
+/home/julius/Dokumente/XpressNet-Control-Server/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/julius/Dokumente/XpressNet-Control-Server/cmake-build-debug/CMakeFiles/rebuild_cache.dir
