@@ -1,0 +1,5 @@
+/home/julius/Dokumente/XpressNet-Control-Server/cmake-build-debug/CMakeFiles/XpressNet-Control-Server.dir
+/home/julius/Dokumente/XpressNet-Control-Server/cmake-build-debug/CMakeFiles/XpressNet-Control-Server-test.dir
+/home/julius/Dokumente/XpressNet-Control-Server/cmake-build-debug/CMakeFiles/test.dir
+/home/julius/Dokumente/XpressNet-Control-Server/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/julius/Dokumente/XpressNet-Control-Server/cmake-build-debug/CMakeFiles/rebuild_cache.dir
